@@ -11,7 +11,8 @@ async function getData() {
 
     const reloadtButton = document. querySelector("#reload");
     let domain = document.getElementById('search').value;
-    let url = 'https://62cc8d9e8042b16aa7d11a12.mockapi.io/api/v1/find-subdomains/Subdomains?q=' + domain;
+    //let url = 'https://62cc8d9e8042b16aa7d11a12.mockapi.io/api/v1/find-subdomains/Subdomains?q=' + domain;
+    let url = `http://64.227.108.141:8080/find-oas?site=${domain}`
     let response = await fetch(url);
 
     let data = await response.json(); // read response body and parse as JSON
@@ -20,7 +21,7 @@ async function getData() {
     for (i = 0; i < data.length; i++) {
         const li = document.createElement("li"); // create li element.
 
-        li.innerHTML = data[i].name; // assigning text to li using array value.
+        li.innerHTML = data[i]; // assigning text to li using array value.
 
         ul.appendChild(li); // append li to ul.
     }
